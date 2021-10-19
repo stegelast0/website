@@ -33,10 +33,10 @@ function encode() {
 
     if(encoding_matrix.det < 0) {
         for(;encoding_matrix.det < 0;) {
-            encoding_matrix.det -= 26;
+            encoding_matrix.det += 26;
         }
     } else if(encoding_matrix.det > 26) {
-        for(;encoding_matrix.det += 26;);
+        for(;encoding_matrix.det -= 26;);
     };
 
     if(encoding_matrix.det == 2 || encoding_matrix.det == 13 || !document.getElementById('encoded_message_input').value) {
@@ -107,11 +107,11 @@ function decode() {
 
     if(encoding_matrix.det < 0) {
         for(;encoding_matrix.det < 0;) {
-            encoding_matrix.det -= 26;
+            encoding_matrix.det += 26;
         };
     } else if(encoding_matrix.det > 26) {
         for(;encoding_matrix.det > 26;) {
-            encoding_matrix.det += 26;
+            encoding_matrix.det -= 26;
         };
     };
 
