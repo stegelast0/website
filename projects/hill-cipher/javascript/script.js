@@ -39,8 +39,8 @@ function encode() {
         for(;encoding_matrix.det -= 26;);
     };
 
-    if(encoding_matrix.det == 2 || encoding_matrix.det == 13 || !document.getElementById('encoded_message_input').value) {
-        console.log('err');
+    if(encoding_matrix.det % 2 == 0 || encoding_matrix.det % 13 == 0 || !document.getElementById('encoded_message_input').value) {
+        window.alert('Invalid input: The encoding matrix determinate cannot be divisible by 2 or 13');
     };
     message.content = document.getElementById('encoded_message_input').value.toString().toUpperCase();
     
@@ -185,7 +185,7 @@ function decode() {
     message.output = "";
     for(u=0; u < message.array.length; u++) {
         for(v=0; v < 2; v++) {
-            var w = ''; 
+            var w; 
             for(w = parseInt(encoding_matrix.inverse[v][0]*message.array[u][0])+(encoding_matrix.inverse[v][1]*message.array[u][1]);w > 26;) {
                 w -= 26;
             };
