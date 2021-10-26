@@ -65,7 +65,8 @@ function encode() {
         for(d=0; d < 2; d++) {
             for(e=0; e < 26; e++) {
                 if(message.array[c][d] == 'Z') {
-                    message.array[c][d] = 0;
+                    message.array[c][d] == 0;
+                    console.log("test");
                 } else if (message.array[c][d] == alphabet[e]) {
                     message.array[c][d] = e+1;
                 }
