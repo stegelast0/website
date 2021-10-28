@@ -116,9 +116,11 @@ function decode() {
         };
     };
 
-    if(encoding_matrix.det == 2 || encoding_matrix.det == 13 || !document.getElementById('encoded_message_input').value) {
-        console.log('err');
+    if(encoding_matrix.det % 2 == 0 || encoding_matrix.det % 13 == 0 || !document.getElementById('encoded_message_input').value) {
+        window.alert('Invalid input: The encoding matrix determinate cannot be divisible by 2 or 13');
     };
+
+    // finds the reciprocal modulo 26 of the encoding matrix determinate
     for(k=0; k<determinate_values.length-1; k++) {
         if(encoding_matrix.det == determinate_values[k]) {
             encoding_matrix.recip_mod = mod26_values[k];
@@ -127,6 +129,8 @@ function decode() {
 
     // more absolutely garbage code >:(
     // applied the inverse rules, and multiplies them by the determinate of the encoding matrix
+
+    encoding_matrix.inverse = [];
     let l = new Array();
     l.push(parseInt(encoding_matrix.array[1][1]) * encoding_matrix.recip_mod);
     l.push(parseInt(-encoding_matrix.array[0][1]) * encoding_matrix.recip_mod);
